@@ -4,9 +4,10 @@
 <meta charset="UTF-8" />
 <title>つらみ</title>
 </head>
-<p>
-	<span th:text="${tsurami}">ツラミ</span>
-</p>
 <body>
+<form th:action="@{/input}" method="post">
+	<span th:text="${tsurami}">ツラミ</span>
+	<button>つらみ</button>
+</form>
 </body>
 </html>

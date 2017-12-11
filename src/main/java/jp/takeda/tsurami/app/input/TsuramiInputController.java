@@ -16,4 +16,9 @@ public class TsuramiInputController {
 		return "input/inputTsurami";
 	}
 
+	@RequestMapping(method = RequestMethod.POST)
+	String doTsurami(Model model) {	
+		return "redirect:/input";
+	}
+
 }
