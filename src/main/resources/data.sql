@@ -1,0 +1,1 @@
+INSERT INTO tsurami (input_date_time) VALUES ('2017-12-12 22:00')
