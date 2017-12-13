@@ -1,6 +1,6 @@
 package jp.takeda.tsurami.domain.model;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import lombok.Data;
 
@@ -8,5 +8,5 @@ import lombok.Data;
 public class Tsurami {
 
 	private int tsuramiId;
-	private Timestamp inputDateTime;
+	private LocalDateTime inputDateTime;
 }

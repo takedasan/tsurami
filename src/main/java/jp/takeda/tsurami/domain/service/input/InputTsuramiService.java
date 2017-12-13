@@ -18,4 +18,8 @@ public class InputTsuramiService {
 		return this.tsuramiMapper.findOne(tsurami.getTsuramiId());
 	}
 
+	public void insert(Tsurami tsurami) {
+		this.tsuramiMapper.insert(tsurami.getInputDateTime());
+	}
+
 }

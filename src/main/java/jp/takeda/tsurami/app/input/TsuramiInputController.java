@@ -1,5 +1,7 @@
 package jp.takeda.tsurami.app.input;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,13 +25,17 @@ public class TsuramiInputController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	String doTsurami(Model model) {
-		Tsurami dummyTsurami = new Tsurami();
-		dummyTsurami.setTsuramiId(1);
-		Tsurami tsurami = this.inputTsuramiService.find(dummyTsurami);
+		// DB insert
+		Tsurami insertTsurami = new Tsurami();
+		insertTsurami.setInputDateTime(LocalDateTime.now());
+		this.inputTsuramiService.insert(insertTsurami);
 
+		// DB select
+		Tsurami selectTsurami = new Tsurami();
+		selectTsurami.setTsuramiId(1);
+		Tsurami tsurami = this.inputTsuramiService.find(selectTsurami);
 		model.addAttribute("tsurami", tsurami.toString());
 
-		// return "redirect:/input";
 		return "input/inputTsurami";
 	}
 
