@@ -2,12 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>つらみ</title>
+<title>つらいときに押すボタン</title>
+<link href="../static/css/main.css" th:href="@{/css/main.css}"
+	rel="stylesheet" />
 </head>
 <body>
-<form th:action="@{/input}" method="post">
-	<span th:text="${tsurami}">ツラミ</span>
-	<button>つらみ</button>
-</form>
+	<form th:action="@{/input}" method="post">
+		<div id="wrapper">
+			<div>
+				<button class="btn">つらみ</button>
+			</div>
+			<div>
+				過去1時間に<span th:text="${currentOneHour}">1</span>回つらい感じになりました。
+			</div>
+			<div>
+				過去1日に<span th:text="${currentOneDay}">1</span>回つらい感じになりました。
+			</div>
+		</div>
+	</form>
 </body>
 </html>

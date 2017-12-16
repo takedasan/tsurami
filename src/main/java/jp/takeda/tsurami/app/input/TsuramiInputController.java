@@ -20,6 +20,16 @@ public class TsuramiInputController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	String inputTsurami(Model model) {
+		Tsurami dummyTsurami = new Tsurami();
+		dummyTsurami.setInputDateTime(LocalDateTime.now());
+
+		// DB select
+		Integer oneHour = this.inputTsuramiService.countCurrentOneHour(dummyTsurami);
+		model.addAttribute("currentOneHour", oneHour);
+
+		Integer oneDay = this.inputTsuramiService.countCurrentOneDay(dummyTsurami);
+		model.addAttribute("currentOneDay", oneDay);
+
 		return "input/inputTsurami";
 	}
 
@@ -31,10 +41,11 @@ public class TsuramiInputController {
 		this.inputTsuramiService.insert(insertTsurami);
 
 		// DB select
-		Tsurami selectTsurami = new Tsurami();
-		selectTsurami.setTsuramiId(1);
-		Tsurami tsurami = this.inputTsuramiService.find(selectTsurami);
-		model.addAttribute("tsurami", tsurami.toString());
+		Integer oneHour = this.inputTsuramiService.countCurrentOneHour(insertTsurami);
+		model.addAttribute("currentOneHour", oneHour);
+
+		Integer oneDay = this.inputTsuramiService.countCurrentOneDay(insertTsurami);
+		model.addAttribute("currentOneDay", oneDay);
 
 		return "input/inputTsurami";
 	}
