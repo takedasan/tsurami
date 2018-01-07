@@ -32,22 +32,4 @@ public class TsuramiInputController {
 
 		return "input/inputTsurami";
 	}
-
-	@RequestMapping(method = RequestMethod.POST)
-	String doTsurami(Model model) {
-		// DB insert
-		Tsurami insertTsurami = new Tsurami();
-		insertTsurami.setInputDateTime(LocalDateTime.now());
-		this.inputTsuramiService.insert(insertTsurami);
-
-		// DB select
-		Integer oneHour = this.inputTsuramiService.countCurrentOneHour(insertTsurami);
-		model.addAttribute("currentOneHour", oneHour);
-
-		Integer oneDay = this.inputTsuramiService.countCurrentOneDay(insertTsurami);
-		model.addAttribute("currentOneDay", oneDay);
-
-		return "input/inputTsurami";
-	}
-
 }
